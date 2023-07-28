@@ -1,48 +1,51 @@
 #include "main.h"
 /**
- * infinite_add - add two numbers
- * @n1: first number
- * @n2: second number
- * @r: pointer to buffer
- * @size_r: buffer size
+ * infinite_add - adds two numbers
+ * @n1: number one
+ * @n2: number two
+ * @r: buffer 
+ * @size_r: buffer size:
  * Return: result
-*/
+ */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-int k = 0, i = 0, j = 0, l = 0;
-int v1 = 0, v2 = 0, t = 0;
+int i = 0, j = 0, k, l, m, o , a = 0;
 while (*(n1 + i) != '\0')
 i++;
 while (*(n2 + j) != '\0')
 j++;
-i--;
-j--;
-if (j >= size_r || i >= size_r)
+if (i >= j)
+l = i;
+else
+l = j;
+if (size_r <= l + 1)
 return (0);
-while (j >= 0 || i >= 0 || k == 1)
+r[l + 1] = '\0';
+i--, j--, size_r--;
+m = *(n1 + i) - 48, o = *(n2 + j) - 48;
+while (l >= 0)
 {
-if (i < 0)
-v1 = 0;
+k = m + o + a;
+if (k >= 10)
+a = k / 10;
 else
-v1 = *(n1 + i)-'0';
-if (j < 0)
-v2 = 0;
+a = 0;
+if (k > 0)
+*(r + l) = (k % 10) + 48;
 else
-v2 = *(n2 + j)-'0';
-t = v1 + v2 + k;
-if (t >= 10)
-k = 1;
+*(r + l) = '0';
+if (i > 0)
+i--, m = *(n1 + i) - 48;
 else
-k = 0;
-if (l >= (size_r - 1))
-return (0);
-*(r + l) = (t % 10) + '0';
-l++;
-j--;
-i--;
+m = 0;
+if (c2 > 0)
+c2--, o = *(n2 + c2) - 48;
+else
+o = 0;
+l--, size_r--;
 }
-if (l == size_r)
-return (0);
-*(r + l) = '\0';
+if (*(r) == '0')
+return (r + 1);
+else
 return (r);
 }
